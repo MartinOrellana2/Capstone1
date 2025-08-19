@@ -1,0 +1,151 @@
+/* --- VARIABLES Y ESTILOS GLOBALES --- */
+:root {
+    --color-primary: #007bff;
+    --color-primary-dark: #0056b3;
+    --color-secondary: #f0f2f5;
+    --color-background: #ffffff;
+    --color-border: #dee2e6;
+    --color-text-primary: #212529;
+    --color-text-secondary: #6c757d;
+    --color-danger: #dc3545;
+    --color-pending: #fd7e14;
+    --color-success: #28a745;
+    --font-family: 'Inter', sans-serif, system-ui;
+    --border-radius: 8px;
+}
+
+/* Importar fuente Inter desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--color-secondary);
+    color: var(--color-text-primary);
+    margin: 0;
+    font-size: 14px;
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.app-container {
+    max-width: 1400px;
+    margin: 2rem auto;
+    background-color: var(--color-background);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+/* --- ENCABEZADO --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.header-left { display: flex; align-items: center; gap: 1.5rem; }
+.header-left h1 { font-size: 1.5rem; margin: 0; }
+.date-info { display: flex; align-items: center; gap: 0.5rem; color: var(--color-text-secondary); text-align: center; }
+
+.header-right { display: flex; align-items: center; gap: 1rem; }
+.user-info { font-weight: 500; }
+.icon-buttons { display: flex; gap: 0.5rem; }
+.icon-btn { background: none; border: none; cursor: pointer; color: var(--color-text-secondary); padding: 0.5rem; border-radius: 50%; }
+.icon-btn:hover { background-color: var(--color-secondary); color: var(--color-text-primary); }
+.status-dropdown { background-color: #ffedd5; color: var(--color-pending); padding: 0.5rem 1rem; border-radius: 20px; font-weight: 500; display: flex; align-items: center; gap: 0.5rem; }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; background-color: var(--color-pending); }
+
+/* --- BOTONES --- */
+.btn { border: none; padding: 0.75rem 1.5rem; border-radius: var(--border-radius); font-weight: 500; cursor: pointer; transition: background-color 0.2s; }
+.btn-primary { background-color: var(--color-success); color: white; }
+.btn-primary:hover { background-color: #218838; }
+.btn-primary-filled { background-color: var(--color-primary); color: white; width: 100%; font-size: 16px; }
+.btn-primary-filled:hover { background-color: var(--color-primary-dark); }
+.btn-secondary { background-color: var(--color-secondary); color: var(--color-text-primary); border: 1px solid var(--color-border); flex-grow: 1; }
+.btn-secondary:hover { background-color: #e2e6ea; }
+
+/* --- CONTENIDO PRINCIPAL LAYOUT --- */
+.main-content {
+    display: flex;
+}
+
+/* --- COLUMNA IZQUIERDA: DETALLES --- */
+.order-details-section {
+    flex-basis: 60%;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+.customer-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; }
+.customer-header h2 { margin: 0; font-size: 1.25rem; }
+.form-group { margin-bottom: 1.5rem; }
+.form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--color-text-secondary); }
+.radio-group { display: flex; gap: 1rem; margin-bottom: 0.5rem; }
+.radio-group label { font-weight: normal; }
+input[type="text"], input[type="number"], textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    box-sizing: border-box;
+    font-size: 14px;
+}
+.input-with-icon { position: relative; }
+.input-with-icon input { padding-right: 2.5rem; }
+.input-with-icon .icon-btn { position: absolute; right: 5px; top: 50%; transform: translateY(-50%); color: var(--color-primary); }
+
+/* --- TABLA DE SERVICIOS --- */
+.service-table-container { flex-grow: 1; }
+#service-table { width: 100%; border-collapse: collapse; }
+#service-table th, #service-table td { padding: 1rem; text-align: left; }
+#service-table thead { border-bottom: 1px solid var(--color-border); color: var(--color-text-secondary); font-weight: 500; }
+#service-table tbody tr { border-bottom: 1px solid var(--color-border); }
+#service-table .quantity-input { width: 60px; text-align: center; }
+.action-icons { display: flex; align-items: center; justify-content: flex-end; }
+.remove-btn { color: var(--color-danger); }
+.add-new-service { color: var(--color-primary); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; }
+.add-new-service:hover { text-decoration: underline; }
+
+/* --- FOOTER DE LA ORDEN (TOTALES) --- */
+.order-footer { display: flex; justify-content: space-between; align-items: flex-end; padding-top: 1.5rem; }
+.discount-section { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: var(--color-text-secondary); cursor: pointer; }
+.totals-section { text-align: right; width: 250px; }
+.totals-section > div { display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
+.totals-section span { color: var(--color-text-secondary); }
+.totals-section strong { font-size: 1.1rem; }
+.totals-section .grand-total { border-top: 1px solid var(--color-border); padding-top: 0.5rem; }
+.totals-section .grand-total strong { font-size: 1.5rem; color: var(--color-text-primary); }
+
+/* --- COLUMNA DERECHA: PANEL VEHÍCULO --- */
+.vehicle-panel {
+    flex-basis: 40%;
+    background-color: #f8f9fa;
+    border-left: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+}
+.tabs { display: flex; border-bottom: 1px solid var(--color-border); }
+.tab-link { padding: 1rem; text-decoration: none; color: var(--color-text-secondary); font-weight: 500; }
+.tab-link.active { color: var(--color-primary); border-bottom: 2px solid var(--color-primary); }
+.panel-content { padding: 1.5rem; flex-grow: 1; overflow-y: auto; }
+.vehicle-info-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+.brand-logo { width: 50px; height: auto; }
+.vehicle-info-header h3, .vehicle-info-header p { margin: 0; }
+.vehicle-info-header p { color: var(--color-text-secondary); }
+.header-actions { margin-left: auto; display: flex; align-items: center; gap: 1rem; }
+.edit-link { color: var(--color-primary); text-decoration: none; font-weight: 500; }
+.red { color: var(--color-danger); }
+.vehicle-stats { display: flex; gap: 1.5rem; margin-bottom: 1.5rem; }
+.stat-item { flex: 1; }
+.fuel-gauge { display: flex; align-items: center; gap: 0.5rem; }
+#fuel-level { width: 100%; }
+#fuel-percentage { font-weight: 500; background-color: var(--color-secondary); padding: 0.2rem 0.5rem; border-radius: 5px; }
+.inspection-buttons { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+.inventory-checklist {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+}
+.inventory-checklist > div { display: flex; align-items: center; }
+.panel-footer { padding: 1.5rem; border-top: 1px solid var(--color-border); }
