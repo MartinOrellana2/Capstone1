@@ -149,3 +149,4 @@ input[type="text"], input[type="number"], textarea {
 }
 .inventory-checklist > div { display: flex; align-items: center; }
 .panel-footer { padding: 1.5rem; border-top: 1px solid var(--color-border); }
+
